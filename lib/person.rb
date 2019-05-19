@@ -1,3 +1,9 @@
+class Numeric
+  def limited(min, max)
+    self < min ? 0 : self > 10 ? 10 : self
+  end
+end
+
 class Person
   attr_accessor :bank_account
   attr_reader :name, :hygiene, :happiness
@@ -10,11 +16,11 @@ class Person
   end
 
   def happiness=(happiness)
-    @happiness = happiness.clamp(0,10)
+    @happiness = happiness.limited(0,10)
   end
 
   def hygiene=(hygiene)
-    @hygiene = hygiene.clamp(0,10)
+    @hygiene = hygiene.limited(0,10)
   end
 
   def happy?
